@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Αρχεία μου</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { color: #222; }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 10px; }
+    a { text-decoration: none; color: #0066cc; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <h1>📁 Τα Αρχεία μου</h1>
+
+  <input type="text" id="searchInput" placeholder="Αναζήτησε αρχεία...">
+
+  <ul id="fileList">
+    <li><a href="https://example.com/file1.pdf" target="_blank">📄 Σημειώσεις Φυσικής</a></li>
+    <li><a href="https://example.com/file2.zip" target="_blank">📦 Κώδικας HTML</a></li>
+    <li><a href="https://example.com/file3.jpg" target="_blank">🖼️ Εικόνα Εξωφύλλου</a></li>
+    <li><a href="https://example.com/file4.docx" target="_blank">📝 Έκθεση</a></li>
+  </ul>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const fileList = document.getElementById('fileList');
+    const files = fileList.getElementsByTagName('li');
+
+    searchInput.addEventListener('keyup', function () {
+      const filter = searchInput.value.toLowerCase();
+      for (let i = 0; i < files.length; i++) {
+        const a = files[i].getElementsByTagName('a')[0];
+        const text = a.textContent.toLowerCase();
+        files[i].style.display = text.includes(filter) ? "" : "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
